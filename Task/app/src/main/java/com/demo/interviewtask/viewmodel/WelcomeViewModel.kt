@@ -10,12 +10,14 @@ import com.demo.interviewtask.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.sql.DriverManager.println
 
 class WelcomeViewModel : ViewModel() {
     private var movieLiveData = MutableLiveData<List<Problems>>()
     fun getPopularMovies() {
         RetrofitInstance.api.getData().enqueue(object  : Callback<DataModel> {
             override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
+                println("TAG Enter "+ response.body()!!.problems!![0].Diabetes!![0].medications!![0].medicationsClasses!![0].className2!![0].associatedDrug2!![1].toString())
                 if (response.body()!=null){
                     movieLiveData.value = response.body()!!.problems
                 }
